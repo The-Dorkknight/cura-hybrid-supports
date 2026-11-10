@@ -1,0 +1,7 @@
+# Keep launchers runnable on every system whatever Git does with line endings.
+*.sh       text eol=lf
+*.command  text eol=lf
+*.py       text eol=lf
+*.bat      text eol=crlf
+*.webp     binary
+*.png      binary

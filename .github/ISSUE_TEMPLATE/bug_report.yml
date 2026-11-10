@@ -1,0 +1,46 @@
+name: Bug report
+description: Something went wrong with Hybrid Supports
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Plugin version
+      description: Shown at the bottom of the Hybrid Supports tool panel (e.g. 0.6.0-wip, built 2026-10-16)
+    validations:
+      required: true
+  - type: input
+    id: cura
+    attributes:
+      label: Cura version and operating system
+      placeholder: Cura 5.13.0 on Linux Mint 22 (AppImage)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: settings
+    attributes:
+      label: Plugin settings used
+      description: Head mode, gusset count/height/length, max span, etc.
+  - type: textarea
+    id: check
+    attributes:
+      label: Installer check
+      description: Run the installer (or `python3 install.py --check`) and paste what it says.
+      render: text
+  - type: textarea
+    id: log
+    attributes:
+      label: cura.log excerpt
+      description: Help > Show Configuration Folder, open cura.log, paste lines mentioning "Hybrid".
+      render: text
+  - type: textarea
+    id: model
+    attributes:
+      label: Model
+      description: Attach the model or a screenshot of the overhang if you can.

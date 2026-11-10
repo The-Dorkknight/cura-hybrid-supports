@@ -1,0 +1,47 @@
+{
+ "settings": {
+  "layer_height_0": 0.3,
+  "layer_height": 0.2,
+  "wall_line_count": 4,
+  "adhesion_type": "brim",
+  "brim_width": 8
+ },
+ "parts": [
+  {
+   "file": "test-prints/plate/p1_channel_lobes.stl",
+   "mode": "lobes",
+   "x": 47.5,
+   "y": 75.0
+  },
+  {
+   "file": "test-prints/plate/p2_channel_tethers.stl",
+   "mode": "tethers",
+   "x": 117.5,
+   "y": 75.0
+  },
+  {
+   "file": "test-prints/plate/p3_channel_cone.stl",
+   "mode": "cone",
+   "x": 187.5,
+   "y": 75.0
+  },
+  {
+   "file": "test-prints/plate/p4_channel_branch.stl",
+   "mode": "branch",
+   "x": 47.5,
+   "y": 155.0
+  },
+  {
+   "file": "test-prints/plate/p5_corner_lobes.stl",
+   "mode": "lobes",
+   "x": 117.5,
+   "y": 155.0
+  },
+  {
+   "file": "test-prints/plate/p6_corner_cone.stl",
+   "mode": "cone",
+   "x": 187.5,
+   "y": 155.0
+  }
+ ]
+}

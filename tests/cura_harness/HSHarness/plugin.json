@@ -1,0 +1,8 @@
+{
+    "name": "Hybrid Supports test harness",
+    "author": "Matthew Armstrong",
+    "version": "0.1.0",
+    "description": "Development only. Drives Cura through load, generate and slice when HS_HARNESS_OUT is set; does nothing otherwise.",
+    "api": 8,
+    "supported_sdk_versions": ["8.0.0"]
+}

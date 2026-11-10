@@ -1,0 +1,170 @@
+<!doctype html>
+<!-- Required Notice: Copyright Matthew Armstrong (https://github.com/The-Dorkknight)
+     Licensed under the PolyForm Noncommercial License 1.0.0. No warranty. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hybrid Supports for Cura</title>
+<meta name="description" content="Hollow tower supports with adjustable gussets and conforming heads for UltiMaker Cura. Source-available · Non-commercial. Work in progress.">
+<link rel="icon" href="images/favicon-64.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --text: #1f2933; --muted: #52606d;
+    --line: #d9dee4; --accent: #c8601f; --accent-soft: #fbe9dd; --warn-bg: #fff4d6; --warn: #7a5300;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12171c; --surface: #1b2229; --text: #e7ebef; --muted: #9aa5b1;
+      --line: #2d3742; --accent: #f0904f; --accent-soft: #3a2618; --warn-bg: #3a2e10; --warn: #f4cf72;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+  .wip { background: var(--warn-bg); color: var(--warn); font-weight: 700; text-align: center;
+         padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  header { display: grid; gap: 28px; grid-template-columns: 1fr; padding: 40px 0 24px; align-items: center; }
+  @media (min-width: 800px) { header { grid-template-columns: 1fr 1.1fr; } }
+  .brand { display: flex; gap: 14px; align-items: center; }
+  .brand img { width: 64px; height: 64px; border-radius: 14px; }
+  h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.1; margin: 0; }
+  .lede { color: var(--muted); font-size: 18px; margin: 16px 0 22px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-block; padding: 10px 16px; border-radius: 10px; text-decoration: none; font-weight: 600;
+         border: 1px solid var(--line); color: var(--text); background: var(--surface); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .hero img, figure img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+  figcaption { color: var(--muted); font-size: 13px; margin-top: 6px; }
+  h2 { margin: 40px 0 14px; font-size: 24px; }
+  .cards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); }
+  .two { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .two { grid-template-columns: 1fr 1fr; } }
+  ul.tight { margin: 0; padding-left: 20px; }
+  ol li { margin-bottom: 6px; }
+  code { background: var(--accent-soft); padding: 1px 5px; border-radius: 5px; font-size: 14px; }
+  footer { margin: 48px 0 32px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+  a { color: var(--accent); }
+  .shots { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+</style>
+</head>
+<body>
+<div class="wip">WORK IN PROGRESS: MANY FEATURES MAY BE BROKEN · v0.6.6-wip · sliced in Cura 5.13 (Neptune 4 profile), not yet test-printed</div>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="brand"><img src="images/icon-512.png" alt=""><h1>Hybrid Supports for Cura</h1></div>
+      <p class="lede">One hollow pillar per overhang, with gussets at the foot and a hollow star of lobes on top that flares out to the corners. Every layer is one closed loop, and the gaps between lobes are short enough to bridge. Less time and plastic under tall overhangs.</p>
+      <div class="btns">
+        <a class="btn primary" data-link="releases" href="https://github.com/The-Dorkknight/cura-hybrid-supports/releases">Download</a>
+        <a class="btn" data-link="repo" href="https://github.com/The-Dorkknight/cura-hybrid-supports">Source on GitHub</a>
+      </div>
+    </div>
+    <figure class="hero">
+      <img src="images/cura-panel.webp" alt="Cura 5.13 with the Hybrid Supports panel open, Neptune 4 profile">
+      <figcaption>Cura 5.13 with the Elegoo Neptune 4 profile and a synthetic test box.</figcaption>
+    </figure>
+  </header>
+
+  <h2>What it does</h2>
+  <div class="cards">
+    <div class="card"><h3>One pillar per overhang</h3><p>A hollow tube placed where it has a clear column down to the plate or the model. Wide gaps get one pillar, not three.</p></div>
+    <div class="card"><h3>Hollow lobes head</h3><p>A star-shaped pseudo-cone: thick hollow lobes flare out at 45° to the corners. One closed loop per layer, even with 0 support walls.</p></div>
+    <div class="card"><h3>Only as many lobes as needed</h3><p>More lobes are added only where a bridge would be longer than your Max bridge span. Edges that rest on a wall count as supported. A cone with spokes inside is still an option.</p></div>
+    <div class="card"><h3>Gussets that stay clear</h3><p>Set count, height and length. Fins that would hit the model are shortened automatically.</p></div>
+    <div class="card"><h3>No double support</h3><p>A support blocker over each overhang stops Cura's auto-support from filling the same area.</p></div>
+    <div class="card"><h3>Plain Cura plugin</h3><p>Supports are normal support meshes. No custom CuraEngine; works on Cura 5.x, including profiles with a minimum support area.</p></div>
+  </div>
+
+  <h2>What Cura makes of it</h2>
+  <figure><img src="images/sliced-layers.webp" alt="Five sliced layers of a test box: hollow rings, hollow lobes growing out, an X of lobes under the ceiling"><figcaption>Layers from the gcode Cura 5.13 produced for a 70 × 40 × 120 mm test box (Neptune 4 profile): hollow rings low down, hollow lobes growing out, and lobes to the four corners (plus one to the open front edge) under the inner ceiling. Every pillar printed on 100 % of its layers.</figcaption></figure>
+  <div class="card" style="margin-top:14px">
+    <h3>The test box, slicer estimates</h3>
+    <p>Hybrid Supports, Lobes head: 149 min, 4.9 m of support filament. Cone head: 151 min, 5.4 m. Cura tree support: 151 min, 6.5 m. Cura normal support: 190 min, 22.3 m. So about 78 % less support filament than normal support and about 25 % less than tree support, at about the same time as tree. Nothing has been printed yet.</p>
+  </div>
+
+  <div class="shots">
+    <figure><img src="images/cura-preview.webp" alt="Cura layer view of the test box with one pillar and cone under the ceiling"><figcaption>Cura 5.13 layer view: one pillar with lobes under the inner ceiling, pillars under the ribs.</figcaption></figure>
+    <figure><img src="images/render-lobes.webp" alt="Geometry render of the test box with lobe supports"><figcaption>Geometry render of the same box.</figcaption></figure>
+    <figure><img src="images/render-blob.webp" alt="A tilted rounded part with standing webs under small low overhangs"><figcaption>Low, curved overhangs get thin standing webs instead.</figcaption></figure>
+  </div>
+
+  <h2>Gusset height is a cost lever</h2>
+  <figure><img src="images/gusset-heights.webp" alt="One tower rendered with gusset heights 0, 4, 12 and 24 mm and their support volumes"><figcaption>One 50 mm test tower (0.1 geometry): 0 mm gussets 2.74 cm³, 24 mm gussets 2.95 cm³ (mesh volume before Cura's support infill). Taller gussets also add perimeters on every layer they cover.</figcaption></figure>
+
+  <section id="prints" hidden>
+    <h2>Real prints</h2>
+    <div class="shots">
+      <figure><img class="photo" src="images/print-1.jpg" alt="Printed part with hybrid supports"></figure>
+      <figure><img class="photo" src="images/print-2.jpg" alt="Printed part with hybrid supports removed"></figure>
+    </div>
+  </section>
+
+  <h2>Install</h2>
+  <div class="two">
+    <div class="card">
+      <h3>Click and launch</h3>
+      <ol>
+        <li>Download the source (Code › Download ZIP) and unzip it. Close Cura.</li>
+        <li>Double-click <code>Install-Linux.sh</code>, <code>Install-Windows.bat</code> or <code>Install-Mac.command</code> (the Windows and Mac ones are not yet tested).</li>
+        <li>Press Install, then Start Cura. The window shows a green tick once Cura has loaded the plugin.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>Cura package</h3>
+      <ol>
+        <li>Download <code>HybridSupports-…curapackage</code> from Releases.</li>
+        <li>Drag it onto the Cura window and accept.</li>
+        <li>Restart Cura.</li>
+      </ol>
+    </div>
+  </div>
+
+  <figure style="margin-top:14px"><img src="images/installer.webp" alt="Installer window listing three Cura versions with the plugin loaded, broken and not installed" style="max-width:780px"><figcaption>The installer checks each Cura it finds and reads Cura's log to confirm the plugin loaded. In Cura, look under Extensions › Hybrid Supports, or load a model and press <code>H</code>.</figcaption></figure>
+
+  <h2>What doesn't exist yet</h2>
+  <div class="card">
+    <ul class="tight">
+      <li>A test print on a real printer; testing on Windows, macOS or Cura 5.14</li>
+      <li>Paint-on supports. Cura 5.14 adds these natively, so this plugin won't.</li>
+      <li>A real print of the experimental Tethers head (strips strung between walls under the overhang, then a cap; straight bridges from wall to wall that lean 45° so they snap off; 134 min instead of 149 on the test box in Cura's estimate)</li>
+      <li>Background generation (it blocks the UI for a few seconds on complex parts)</li>
+      <li>Where the model blocks the cone, part of an overhang is only partly reached; the status line says how many</li>
+    </ul>
+  </div>
+
+  <footer>
+    © Matthew Armstrong (<a href="https://github.com/The-Dorkknight">The-Dorkknight</a>).
+    Source-available · Non-commercial, under the <a data-link="license" href="https://github.com/The-Dorkknight/cura-hybrid-supports/blob/main/LICENSE.md">PolyForm Noncommercial License 1.0.0</a>.
+    Provided as-is, with no warranty and no liability. Not affiliated with UltiMaker.
+  </footer>
+</div>
+<script>
+  // Work out owner/repo from the Pages URL so links survive renames and forks.
+  (function () {
+    var owner = "The-Dorkknight", repo = "cura-hybrid-supports";
+    var host = location.hostname;
+    if (/\.github\.io$/i.test(host)) {
+      owner = host.split(".")[0];
+      var seg = location.pathname.split("/").filter(Boolean)[0];
+      if (seg) repo = seg;
+    }
+    var base = "https://github.com/" + owner + "/" + repo;
+    var map = { repo: base, releases: base + "/releases", license: base + "/blob/main/LICENSE.md" };
+    document.querySelectorAll("[data-link]").forEach(function (a) { a.href = map[a.dataset.link]; });
+
+    // Real-print photos appear only once they exist.
+    var section = document.getElementById("prints");
+    document.querySelectorAll("img.photo").forEach(function (img) {
+      img.addEventListener("load", function () { section.hidden = false; });
+      img.addEventListener("error", function () { img.closest("figure").remove(); });
+    });
+  })();
+</script>
+</body>
+</html>

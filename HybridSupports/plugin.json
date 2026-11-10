@@ -1,0 +1,8 @@
+{
+    "name": "Hybrid Supports",
+    "author": "Matthew Armstrong",
+    "version": "0.6.6",
+    "description": "Hollow tower supports with base gussets and a bespoke trapezoid or conforming head. Saves time and material on tall overhangs.",
+    "api": 8,
+    "supported_sdk_versions": ["8.0.0"]
+}

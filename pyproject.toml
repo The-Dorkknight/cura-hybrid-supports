@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cura-hybrid-supports"
+dynamic = ["version"]
+description = "Hollow tower supports with gussets and bespoke heads for UltiMaker Cura (geometry core). Work in progress."
+readme = "README.md"
+license = { text = "PolyForm-Noncommercial-1.0.0" }
+authors = [{ name = "Matthew Armstrong", email = "The-Dorkknight@users.noreply.github.com" }]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.21"]
+classifiers = ["License :: Other/Proprietary License", "Development Status :: 2 - Pre-Alpha"]
+
+[project.urls]
+Homepage = "https://github.com/The-Dorkknight/cura-hybrid-supports"
+
+[tool.setuptools]
+py-modules = ["hybrid_core"]
+package-dir = { "" = "HybridSupports" }
+
+[tool.setuptools.dynamic]
+version = { attr = "hybrid_core.__version__" }

@@ -1,0 +1,5 @@
+# Runtime: the plugin only needs NumPy, which ships with Cura.
+numpy>=1.21
+# Development only (tests, previews)
+pytest>=7
+matplotlib>=3.5
